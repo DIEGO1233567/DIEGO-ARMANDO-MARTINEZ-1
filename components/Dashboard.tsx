@@ -3,14 +3,15 @@ import { DashboardState, ThemeMode } from '../types';
 import { KPICard } from './KPICard';
 import { FinancialBarChart, FinancialDonutChart } from './Charts'; 
 import { DataGrid } from './DataGrid';
-import { RefreshCw, Filter, Menu, AlertCircle } from 'lucide-react';
+import { RefreshCw, Filter, Menu, AlertCircle, Save } from 'lucide-react';
 
 interface DashboardProps {
   state: DashboardState;
   onReset: () => void;
+  onSave: () => void;
 }
 
-export const Dashboard: React.FC<DashboardProps> = ({ state, onReset }) => {
+export const Dashboard: React.FC<DashboardProps> = ({ state, onReset, onSave }) => {
   const { data, segments, types } = state;
   const [mode, setMode] = useState<ThemeMode>('operative');
   const [isSidebarOpen, setSidebarOpen] = useState(true);
@@ -131,10 +132,18 @@ export const Dashboard: React.FC<DashboardProps> = ({ state, onReset }) => {
                     </button>
                 </div>
 
+                {/* Save Button */}
+                <button 
+                    onClick={onSave}
+                    className={`flex items-center px-4 py-2 text-xs font-bold rounded transition-colors shadow-sm ml-4 ${mode === 'corporate' ? 'bg-[#198754] text-white hover:bg-[#157347]' : 'bg-emerald-600 text-white hover:bg-emerald-700'}`}
+                >
+                    <Save size={14} className="mr-2" /> Guardar
+                </button>
+
                 {/* Reset Button */}
                 <button 
                     onClick={onReset}
-                    className="flex items-center px-4 py-2 bg-[#6c757d] text-white text-xs font-bold rounded hover:bg-slate-600 transition-colors shadow-sm ml-4"
+                    className="flex items-center px-4 py-2 bg-[#6c757d] text-white text-xs font-bold rounded hover:bg-slate-600 transition-colors shadow-sm"
                 >
                     <RefreshCw size={14} className="mr-2" /> Nuevo Archivo
                 </button>

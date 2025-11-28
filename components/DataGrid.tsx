@@ -72,7 +72,11 @@ export const DataGrid: React.FC<DataGridProps> = ({ data, mode, selectedSegment 
                   <tr key={row.id} className="hover:bg-slate-50 transition-colors">
                     <td className="px-6 py-3 text-slate-400 text-xs">{(page - 1) * rowsPerPage + idx + 1}</td>
                     <td className="px-6 py-3 font-medium text-slate-700">{row.concept}</td>
-                    <td className="px-6 py-3"><span className="px-2 py-1 bg-slate-100 rounded text-xs text-slate-600">{row.type}</span></td>
+                    <td className="px-6 py-3">
+                        <span className="inline-block px-2 py-1 rounded border border-slate-300 bg-white text-xs font-bold text-slate-800 shadow-sm whitespace-nowrap">
+                            {row.type}
+                        </span>
+                    </td>
                     <td className="px-6 py-3"><span className="px-2 py-1 bg-[#e2e6ea] rounded text-xs text-black">{row.segment}</span></td>
                     <td className="px-6 py-3 text-center">
                         {row.impactType && (

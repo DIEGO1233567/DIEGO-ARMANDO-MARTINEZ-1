@@ -12,7 +12,7 @@ export interface FinancialRow {
   impactType: string; // BG/ER
   amount: number; // The row total (or max value logic depending on source)
   details: Record<string, number>; // Specific values per business unit
-  originalRow: DataRow;
+  originalRow?: DataRow; // Optional to allow removing it for storage optimization
 }
 
 export type ThemeMode = 'operative' | 'corporate';
